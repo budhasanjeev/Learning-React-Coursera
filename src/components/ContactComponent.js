@@ -14,7 +14,13 @@ class Contact extends Component {
             email: '',
             agree: false,
             contactType: 'Tel.',
-            message: ''
+            message: '',
+            touched: {
+                firstName: false,
+                lastName: false,
+                telNum: false,
+                email: false
+            }
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +41,12 @@ class Contact extends Component {
     handleSubmit(event) {
         alert(`The current state of form is ${JSON.stringify(this.state)}`);
         event.preventDefault();
+    }
+
+    handleBlur = (field) => (event) => {
+        this.setState({
+            touched: { ...this.state.touched, [field]: true}
+        })
     }
 
     render() {
