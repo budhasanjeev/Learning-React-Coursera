@@ -78,7 +78,7 @@ class Contact extends Component {
                                     />
                                     <Errors
                                         className="text-danger"
-                                        model=".firstname"
+                                        model=".firstName"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -101,7 +101,7 @@ class Contact extends Component {
                                     />
                                     <Errors
                                         className="text-danger"
-                                        model=".lastname"
+                                        model=".lastName"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -115,7 +115,7 @@ class Contact extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="telNum" md={2}>Contact Tel.</Label>
                                 <Col md={10}>
-                                    <Control.text model="telNum" id="telNum" name="telNum" 
+                                    <Control.text model=".telNum" id="telNum" name="telNum" 
                                     placeholder="Tel Number" 
                                     className="form-control" 
                                     validators={{
@@ -124,7 +124,7 @@ class Contact extends Component {
                                      />
                                 <Errors
                                     className="text-danger"
-                                    model=".telnum"
+                                    model=".telNum"
                                     show="touched"
                                     messages={{
                                         required: 'Required',
