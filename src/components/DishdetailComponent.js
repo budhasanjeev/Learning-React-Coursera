@@ -17,6 +17,12 @@ class CommentForm extends Component {
     };
 
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(values) {
+    this.toggleModal();
+    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   toggleModal() {
@@ -36,7 +42,7 @@ class CommentForm extends Component {
           <ModalHeader toggle={this.toggleModal}> Submit Comment </ModalHeader>
           <ModalBody>
             <div className="container">
-              <LocalForm>
+              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                 <Row className="form-group">
                   <Label htmlFor="rating">Rating</Label>
                   <Control.select model=".rating" id="rating" name="rating" className="form-control">
@@ -102,7 +108,7 @@ function RenderDish({dish})
   );
 }
 
-function RenderComments({comments}) 
+function RenderComments({comments, addComment, dishId}) 
 {
   return(
     <div className="col-12 col-md-5 m-1">
@@ -119,7 +125,7 @@ function RenderComments({comments})
       })
       }
       </ul>
-      <CommentForm />
+      <CommentForm  dishId={dishId} addComment={addComment} />
     </div>
   );
 }
@@ -141,7 +147,9 @@ const DishDetail = (props) => {
         </div>
         <div className="row">
           <RenderDish dish={props.dish} />
-          <RenderComments comments={props.comments} />
+          <RenderComments comments={props.comments}
+            addComment={props.addComment}
+            dishId={props.dish.id}/>
         </div>
       </div>
     );
