@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createForms, initialFieldState } from 'react-redux-form';
+import { createForms } from 'react-redux-form';
 import { Dishes } from './dishes';
 import { Leaders } from './leaders';
 import { Comments } from './comments';
